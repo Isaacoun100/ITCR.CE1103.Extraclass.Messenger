@@ -13,19 +13,11 @@ import java.net.Socket;
 public class Transmitter extends WalkieTalkie {
     
     Socket cliente;
-    int puerto;
-    String ip;
     BufferedReader entrada;
     BufferedReader teclado;
     PrintStream salida;
-
-    public Transmitter() {
-        this.ip = ConectionIP;
-        this.puerto = ConectionPort;
-    }
     
-    public void iniciar()
-    {
+    public void start(String ip, int puerto){
         
         try
         {
