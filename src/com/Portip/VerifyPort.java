@@ -29,32 +29,17 @@ public class VerifyPort {
         
         
       Socket socket;
-      boolean founded = false;
       
       if (args.length > 0) {
          IPaddress = args[0];
       }
       
-      for (int i = 1024; founded=true ; i++) {
+      int i;
+      
+      for (i=1024; i<64000 ; i++) {
          try {
              
-            System.out.println("Looking for "+ i);
             socket = new Socket(IPaddress, i);
-            
-            if (socket.isConnected()){
-                
-                Port=i;
-                
-                founded=true;
-                
-            }
-            else{
-                
-                System.out.println("There is a server on port " + i + " of " + IPaddress);
-                
-            }
-            
-            System.out.println("There is a server on port " + i + " of " + IPaddress);
             
          }
          catch (UnknownHostException e) {
@@ -65,13 +50,13 @@ public class VerifyPort {
          }
          catch (IOException e) {
              
+             return i;
+             
          }
          
-      }
-        
+      }  
       
-      return Port;
-      
+      return i;
       
     }
     
