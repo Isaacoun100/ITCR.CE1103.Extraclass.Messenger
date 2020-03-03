@@ -1,14 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package UserInterface;
+package com.UserInterface;
+
+import com.Portip.VerifyPort;
 
 /**
  *
- * @author isaac
+ * @author Isaac Herrera Monge
  */
 public class MainMessenger {
+    
+    public static void main(String[] args) {
+        VerifyPort conectPort = new VerifyPort();
+        conectPort.setIP("127.0.0.1");
+    
+        System.out.println(conectPort.getPort(args));
+    
+        
+    }
+    
     
 }
