@@ -5,12 +5,19 @@
  */
 package com.UserInterface;
 
+import com.Comunication.Transmitter;
+
 /**
  *
  * @author isaac
  */
 public class ClientUI extends javax.swing.JFrame {
 
+    Transmitter SendClient;
+    
+    String IPAddress;
+    int NewPort;
+    
     /**
      * Creates new form ClientUI
      */
@@ -102,6 +109,12 @@ public class ClientUI extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
+        IPAddress= jButton3.getText();
+        NewPort = Integer.parseInt(jButton3.getText());
+        
+        SendClient = new Transmitter();
+        SendClient.start(IPAddress, NewPort);
+        
         this.setVisible(false);
         new ChatUI().setVisible(true);        
         
