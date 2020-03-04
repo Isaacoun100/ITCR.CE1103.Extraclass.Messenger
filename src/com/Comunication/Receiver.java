@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +19,19 @@ public class Receiver extends WalkieTalkie {
     Socket socket;
     DataOutputStream salida;
     BufferedReader entrada;
+       
+    
+    public void StopServer(){
         
+        try {
+            socket.close();
+            salida.writeUTF("Fin de la conexión");
+        } catch (Exception ex) {
+            System.out.println("Error, no hay servidor inicializado");
+        }
+        
+    }
+    
     @SuppressWarnings("empty-statement")
     public void StartServer(int port){
         
@@ -36,9 +50,6 @@ public class Receiver extends WalkieTalkie {
             System.out.println(mensaje);
 
             salida = new DataOutputStream(socket.getOutputStream()); 
-
-            salida.writeUTF("Fin de la conexión");
-            socket.close();
 
             }
         catch(IOException e){
