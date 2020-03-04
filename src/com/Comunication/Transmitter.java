@@ -36,12 +36,6 @@ public class Transmitter extends WalkieTalkie {
             String msg = entrada.readLine();
             System.out.print(msg);
             
-            
-            entrada.close();
-            salida.close();
-            teclado.close();
-            cliente.close();
-            
         }
         catch(IOException e)
         {
