@@ -8,6 +8,14 @@ package com.UserInterface;
 import com.Comunication.Receiver;
 import com.Portip.VerifyPort;
 import com.Thread.CommunicationThread;
+import java.io.IOException;
+
+/**
+ * In this frame you get the information of the created
+ * server and where to connect
+ * 
+ * @author Isaac Herrera Monge
+ */
 
 public class ServerUI extends javax.swing.JFrame {
     
@@ -177,11 +185,13 @@ CommunicationThread ServerThread;
             String AvailableIP = Integer.toString(NewPort.getPort());
             
             ServerThread= new CommunicationThread(Port);
+            
+            ServerThread.start();
                       
             PortText.setText(AvailablePort);
             IPText.setText(ServerIP);
-        } catch (Exception ex) {
-            System.out.println("Error al iniciar el servidor");
+        } catch (IOException ex) {
+
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -207,12 +217,12 @@ CommunicationThread ServerThread;
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        ServerManagement.StopServer();
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+
+        this.setVisible(false);
+        new ChatUI().setVisible(true);  
         
         
     }//GEN-LAST:event_jButton4ActionPerformed
