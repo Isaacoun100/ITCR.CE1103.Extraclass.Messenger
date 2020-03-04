@@ -7,10 +7,9 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 /**
- *WalkieTalkie is the father of Receiver
- * and Transmitter, stores the values
- * of both IP and Ports to connect both
- * client and server
+ * Transmitter is the son of WalkieTalkie
+ * stores the value of both IP and Ports 
+ * to connect both client and server
  * 
  * @author Isaac Herrera Monge
  */
