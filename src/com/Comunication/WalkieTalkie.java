@@ -29,4 +29,13 @@ public class WalkieTalkie {
         
     }
     
+    
+     public void Client(){
+        
+        Transmitter Sender = new Transmitter();
+        Sender.start(ConectionIP,ConectionPort);
+        
+        
+    }
+    
 }
