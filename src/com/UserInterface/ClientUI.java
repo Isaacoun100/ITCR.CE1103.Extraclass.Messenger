@@ -6,10 +6,13 @@
 package com.UserInterface;
 
 import com.Comunication.Transmitter;
+import com.Thread.ThreadListener;
 
 /**
- *
- * @author isaac
+ * Here you indicate the IP and Port
+ * where you want to communicate
+ * 
+ * @author Isaac Herrera Monge
  */
 public class ClientUI extends javax.swing.JFrame {
 
@@ -24,6 +27,7 @@ public class ClientUI extends javax.swing.JFrame {
     public ClientUI() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +50,19 @@ public class ClientUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Please enter the server IP");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Please enter the server port");
 
@@ -109,23 +125,35 @@ public class ClientUI extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        IPAddress= jButton3.getText();
-        NewPort = Integer.parseInt(jButton3.getText());
+        IPAddress= jTextField1.getText();
+        NewPort = Integer.parseInt(jTextField2.getText());
+        System.out.println(IPAddress);
+        System.out.println(NewPort);
         
-        SendClient = new Transmitter();
-        SendClient.start(IPAddress, NewPort);
+        ThreadListener Listen = new ThreadListener(NewPort, IPAddress);
+        Listen.start();
+        
         
         this.setVisible(false);
-        new ChatUI().setVisible(true);        
+        new ChatUI().setVisible(true);      
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         this.setVisible(false);
         new MainJFrame().setVisible(true);        
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
