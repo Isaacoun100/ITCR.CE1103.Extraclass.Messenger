@@ -1,36 +1,37 @@
 package com.Comunication;
 
+import com.UserInterface.ChatUI;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
+ * This class stops and initialize
+ * the server that's going to work
+ * as a bridge between both clients
+ * 
+ * @version 1.0
  * @author Isaac Herrera Monge
  */
+
 public class Receiver extends WalkieTalkie {
     
     ServerSocket server;
     Socket socket;
     DataOutputStream salida;
     BufferedReader entrada;
-       
+    String mensaje;
+    ChatUI Chat;
     
-    public void StopServer(){
-        
-        try {
-            socket.close();
-            salida.writeUTF("Fin de la conexión");
-        } catch (Exception ex) {
-            System.out.println("Error, no hay servidor inicializado");
-        }
-        
-    }
+    /**
+     * StartServer initializes the server using the ServerSocket and
+     * Socket class from java.net package
+     * 
+     * @param port The port in which the server is going to be hosted
+     */
     
     @SuppressWarnings("empty-statement")
     public void StartServer(int port){
@@ -44,17 +45,27 @@ public class Receiver extends WalkieTalkie {
             server = new ServerSocket(port);
             socket = new Socket();
             socket = server.accept();
+            
+            while (!"FIN".equals(mensaje)){
 
             entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String mensaje = entrada.readLine();;
+            mensaje = entrada.readLine();
             System.out.println(mensaje);
+            Chat = new ChatUI();
+            Chat.newMessage(mensaje);
+            
+            salida = new DataOutputStream(socket.getOutputStream());
+            
+            
+            }
 
-            salida = new DataOutputStream(socket.getOutputStream()); 
-
+            socket.close();
+            salida.writeUTF("Fin de la conexión");
+            
             }
         catch(IOException e){
 
-            System.out.println("Conexión fallida");
+            System.out.println("Fin de la conexión");
             
         }
     
