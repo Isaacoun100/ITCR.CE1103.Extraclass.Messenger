@@ -6,8 +6,10 @@
 package com.UserInterface;
 
 /**
- *
- * @author isaac
+ * In this frame the user chooses wether they want to
+ * be a server or a client
+ * 
+ * @author Isaac Herrera Monge
  */
 public class MainJFrame extends javax.swing.JFrame {
 
