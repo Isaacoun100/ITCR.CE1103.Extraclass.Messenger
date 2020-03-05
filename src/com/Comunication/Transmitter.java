@@ -46,11 +46,11 @@ public class Transmitter extends WalkieTalkie {
             
             while(!"FIN".equals(msg)){
             
-                msg = entrada.readLine();
-                System.out.print(msg);
+            msg = entrada.readLine();
+            System.out.print(msg);
+            
                 
-                
-            }
+        }
             
         }
         catch(IOException e)
