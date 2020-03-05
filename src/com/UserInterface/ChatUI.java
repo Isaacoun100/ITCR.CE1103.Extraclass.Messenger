@@ -35,7 +35,6 @@ public class ChatUI extends javax.swing.JFrame {
     
     public void newMessage(String message){
         
-        
         jTextField2.setText(message);
         
     }
