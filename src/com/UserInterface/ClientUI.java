@@ -135,7 +135,7 @@ public class ClientUI extends javax.swing.JFrame {
         
         
         this.setVisible(false);
-        new ChatUI().setVisible(true);      
+        new ClientSender().setVisible(true);      
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
