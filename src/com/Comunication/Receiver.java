@@ -48,13 +48,13 @@ public class Receiver extends WalkieTalkie {
             
             while (!"FIN".equals(mensaje)){
 
-            entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            mensaje = entrada.readLine();
-            System.out.println(mensaje);
-            Chat = new ChatUI();
-            Chat.newMessage(mensaje);
+                entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                mensaje = entrada.readLine();
+                System.out.println(mensaje);
+                Chat = new ChatUI();
+                Chat.newMessage(mensaje);
             
-            salida = new DataOutputStream(socket.getOutputStream());
+                salida = new DataOutputStream(socket.getOutputStream());
             
             
             }
