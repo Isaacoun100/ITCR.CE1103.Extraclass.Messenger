@@ -6,8 +6,13 @@
 package com.UserInterface;
 
 /**
- *
- * @author isaac
+ *ClientSender is created to give
+ * the user a more user friendly
+ * way to communicate with the
+ * server instead of using the
+ * terminal.
+ * 
+ * @author Isaac Herrera
  */
 public class ClientSender extends javax.swing.JFrame {
 
